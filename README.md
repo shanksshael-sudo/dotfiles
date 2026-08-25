@@ -97,7 +97,7 @@ sudo pacman -S bspwm sxhkd polybar picom kitty dunst rofi feh \
 ### 2. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+git clone https://github.com/shanksshael-sudo/dotfiles.git ~/dotfiles
 ```
 
 ### 3. Run the installer
@@ -149,7 +149,7 @@ Adjust `screenlayout/LG_MONITOR.sh` with your own `xrandr` command.
 
 ## 📝 Notes
 
-- Wallpaper is loaded from `~/Pictures/wallpapers/wallpaper.jpg` — place yours there.
+- Wallpaper is loaded from `~/Pictures/wallpapers/wallpaper.jpg` and is included in this repo under `wallpapers/`. The installer copies it automatically.
 - Kitty background opacity is `0.8`, further blurred by picom.
 - `smart-idle.sh` auto-locks on idle — adjust the timeout inside the script.
 - Border / accent color is `#00f5ff`. Change in `bspwm/bspwmrc` and `kitty/kitty.conf`.

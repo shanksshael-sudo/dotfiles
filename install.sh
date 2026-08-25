@@ -131,6 +131,12 @@ info "Linking screenlayout..."
 link "$DOTFILES_DIR/screenlayout/LG_MONITOR.sh" "$HOME/.screenlayout/LG_MONITOR.sh"
 chmod +x "$DOTFILES_DIR/screenlayout/LG_MONITOR.sh"
 
+# ── Wallpaper ─────────────────────────────────────────────────────────────────
+info "Installing wallpaper..."
+mkdir -p "$HOME/Pictures/wallpapers"
+cp "$DOTFILES_DIR/wallpapers/wallpaper.jpg" "$HOME/Pictures/wallpapers/wallpaper.jpg"
+success "Wallpaper copied to ~/Pictures/wallpapers/wallpaper.jpg"
+
 echo ""
 echo -e "${GREEN}✔ All done! Log out and back in (or run: exec bspwm) to apply.${NC}"
 echo ""
