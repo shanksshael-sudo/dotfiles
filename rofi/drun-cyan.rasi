@@ -1,0 +1,104 @@
+/**
+ * Cyan-Black / Audiowide — App Launcher (drun)
+ */
+* {
+    bg-col:        #0a0e14ee;
+    bg-col-light:  #10151ce6;
+    border-col:    #00e5ffff;
+    selected-col:  #00e5ff33;
+    fg-col:        #c8f6ffff;
+    fg-col2:       #00e5ffff;
+    grey:          #7a8a99ff;
+    font: "Audiowide 11";
+}
+
+window {
+    transparency: "real";
+    background-color: @bg-col;
+    border:        2px;
+    border-color:  @border-col;
+    border-radius: 14px;
+    width:  620px;
+    height: 480px;
+    location: center;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    children:      [ prompt, entry ];
+    background-color: @bg-col-light;
+    border-radius: 8px;
+    padding:       10px;
+    margin:        14px 14px 6px 14px;
+}
+
+prompt {
+    background-color: @selected-col;
+    text-color:    @fg-col2;
+    padding:       6px 12px;
+    border-radius: 6px;
+    margin:        0 8px 0 0;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: "";
+}
+
+entry {
+    padding: 6px;
+    text-color: @fg-col;
+    background-color: inherit;
+    placeholder: "Search…";
+    placeholder-color: @grey;
+}
+
+listview {
+    columns:    5;
+    lines:      3;
+    spacing:    12px;
+    padding:    10px 14px 14px 14px;
+    fixed-height: true;
+    background-color: transparent;
+    cycle: true;
+}
+
+element {
+    orientation: vertical;
+    padding: 12px 4px;
+    background-color: @bg-col-light;
+    text-color: @fg-col;
+    border-radius: 10px;
+    border: 1px;
+    border-color: #00e5ff00;
+}
+
+element-icon {
+    size: 42px;
+    horizontal-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    margin: 8px 0 0 0;
+    font: "Audiowide 8";
+    background-color: transparent;
+    text-color: #ffffff;
+}
+
+element selected {
+    background-color: @selected-col;
+    text-color: @fg-col2;
+    border-color: @border-col;
+}
+
+scrollbar {
+    handle-color: @border-col;
+    width: 3px;
+}

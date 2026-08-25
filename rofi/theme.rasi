@@ -1,0 +1,46 @@
+* {
+  bg:       #0a0a0fee;
+  bg-alt:   #1a1a2ecc;
+  fg:       #e0e0e0;
+  accent:   #00f5ff;
+  red:      #ff4466;
+  transparent: #00000000;
+  font:     "JetBrainsMono Nerd Font 11";
+  background-color: transparent;
+  text-color: @fg;
+}
+window {
+  background-color: @bg;
+  border:           2px solid;
+  border-color:     @accent;
+  border-radius:    12px;
+  width:            500px;
+  padding:          10px;
+}
+mainbox {
+  background-color: transparent;
+  children: [inputbar, listview];
+  spacing: 8px;
+  padding: 8px;
+}
+inputbar {
+  background-color: @bg-alt;
+  border-radius:    8px;
+  padding:          10px 14px;
+  children:         [prompt, entry];
+}
+prompt { text-color: @accent; padding: 0 8px 0 0; }
+entry  { placeholder: "Search..."; placeholder-color: #444466; }
+listview {
+  background-color: transparent;
+  lines: 8; columns: 1; spacing: 4px;
+}
+element {
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 9px 12px;
+  spacing: 10px;
+  children: [element-icon, element-text];
+}
+element selected { background-color: @accent; text-color: #0a0a0f; }
+element-icon { size: 20px; }

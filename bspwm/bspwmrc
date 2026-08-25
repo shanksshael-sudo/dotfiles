@@ -1,0 +1,74 @@
+#!/bin/sh
+
+export PATH="$HOME/.config/bspwm/bin:$PATH"
+export XDG_CURRENT_DESKTOP='bspwm'
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+run() { pidof -q "$1" || "$@" & }
+
+# Kill previous instances
+pkill -x sxhkd; pkill -x polybar; pkill -x picom; pkill -x dunst
+sleep 0.2
+
+# Apply monitor layout only if HDMI1 is physically connected
+HDMI_CONNECTED=$(xrandr --query | grep "^HDMI1 connected ")
+if [ -n "$HDMI_CONNECTED" ]; then
+    [ -f ~/.screenlayout/LG_MONITOR.sh ] && ~/.screenlayout/LG_MONITOR.sh
+    sleep 0.8  # wait for xrandr to settle
+fi
+
+# Workspaces — dynamic assignment based on connected monitors
+HDMI_ACTIVE=$(xrandr --query | grep -w "connected" | grep "^HDMI1" | grep -o "[0-9]*x[0-9]*+[0-9]*+[0-9]*")
+if [ -n "$HDMI_ACTIVE" ]; then
+    # Both monitors connected: HDMI1 gets 1-5, LVDS1 gets 6-10
+    bspc monitor HDMI1 -d 1 2 3 4 5
+    bspc monitor LVDS1 -d 6 7 8 9 10
+else
+    # Only laptop screen: give it all 10 desktops
+    bspc monitor LVDS1 -d 1 2 3 4 5 6 7 8 9 10
+fi
+
+# Config
+bspc config border_width          2
+bspc config window_gap            6
+bspc config top_padding           48
+bspc config bottom_padding        0
+bspc config left_padding          0
+bspc config right_padding         0
+bspc config split_ratio           0.52
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+bspc config single_monocle        false
+bspc config focus_follows_pointer true
+bspc config pointer_modifier      mod4
+bspc config pointer_action1       move
+bspc config pointer_action2       resize_side
+bspc config pointer_action3       resize_corner
+
+# Colors
+bspc config normal_border_color   "#1a1a2e"
+bspc config active_border_color   "#00f5ff"
+bspc config focused_border_color  "#00f5ff"
+bspc config presel_feedback_color "#00f5ff44"
+
+# Rules
+bspc rule -a Airctl state=floating
+bspc rule -a Blueman-manager state=floating rectangle=467x600+0+0 center=true
+bspc rule -a Gimp state=floating
+bspc rule -a mpv  state=floating center=true
+bspc rule -a blueman-manager state=floating
+bspc rule -a airctl state=floating
+
+# Autostart
+xsetroot -cursor_name left_ptr &
+run sxhkd -c ~/.config/sxhkd/sxhkdrc
+run picom --config ~/.config/picom/picom.conf
+run dunst
+~/.config/bspwm/scripts/smart-idle.sh &
+
+# Wallpaper — fill each monitor independently (no stretching across both)
+feh --no-fehbg --bg-fill ~/Pictures/wallpapers/wallpaper.jpg 2>/dev/null \
+  || xsetroot -solid '#0a0a0f'
+
+# Launch polybar on all connected monitors (background script handles timing)
+sleep 0.5 && ~/.config/bspwm/scripts/launch-polybar.sh &

@@ -1,0 +1,130 @@
+# Terminal
+super + Return
+  kitty
+super + alt + Return
+  kitty --class FloaTerm
+
+# App launcher
+super + @space
+  rofi -show drun -theme ~/.config/rofi/drun-cyan.rasi
+
+# Window switcher
+alt + Tab
+  rofi -show window -theme ~/.config/rofi/launcher.rasi
+
+# Close / Kill
+super + x
+  bspc node -c
+super + shift + x
+  bspc node -k
+
+# Close all in desktop
+super + ctrl + x
+  bspc query -N -d | xargs -I id -n 1 bspc node id -c
+
+# Reload sxhkd
+super + Escape
+  pkill -USR1 -x sxhkd
+
+# Power menu
+super + alt + p
+  ~/.config/rofi/scripts/powermenu.sh
+
+# WiFi panel
+super + alt + n
+  ~/.config/rofi/scripts/wifimenu.sh
+
+# Bluetooth panel
+super + alt + b
+  ~/.config/rofi/scripts/btmenu.sh
+
+# Screenshot
+super + alt + s
+  scrot ~/Pictures/screenshot_%Y%m%d_%H%M%S.png -z \
+    && dunstify -i ~/.config/bspwm/assets/screenshot.png "" "Screenshot saved"
+
+# Restart bspwm
+super + alt + r
+  bspc wm -r
+
+# Quit bspwm
+ctrl + super + alt + q
+  bspc quit
+
+# Lock
+ctrl + super + alt + l
+  ~/.config/bspwm/scripts/lockscreen.sh
+
+# Shutdown / Reboot
+ctrl + super + alt + p
+  systemctl poweroff
+ctrl + super + alt + r
+  systemctl reboot
+
+# Focus
+super + {Left,Down,Up,Right}
+  bspc node -f {west,south,north,east}
+super + alt + {Left,Down,Up,Right}
+  bspc node -f {west,south,north,east}
+
+# Swap
+ctrl + alt + {Left,Down,Up,Right}
+  bspc node -s {west,south,north,east}.local
+
+# Rotate
+ctrl + Tab
+  bspc node @/ --rotate 90
+
+# Workspaces
+super + {1-9,0}
+  bspc desktop -f '^{1-9,10}'
+super + ctrl + {1-9,0}
+  bspc node -d '^{1-9,10}'
+
+# Navigate workspaces
+super + {Left,Right}
+  bspc desktop -f {prev,next}
+
+# States
+alt + {t,a,f}
+  bspc node -t {tiled,floating,fullscreen}
+alt + m
+  bspc desktop -l next
+
+# Resize
+super + alt + {plus,minus}
+  bspc node -z top_right {20 -20,-20 20}; \
+  bspc node -z bottom_left {-20 20,20 -20}
+
+# Move floating
+super + shift + {Left,Down,Up,Right}
+  bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Transparency
+ctrl + alt + {plus,minus}
+  picom-trans {-c -3,-c +3}
+
+# Brightness
+XF86MonBrightness{Up,Down}
+  brightnessctl set {+5%,5%-} \
+    && dunstify -t 1000 "" "$(brightnessctl -m | cut -d, -f4)"
+
+# Volume
+XF86Audio{RaiseVolume,LowerVolume}
+  pamixer {-i,-d} 5 \
+    && dunstify -t 800 "" "$(pamixer --get-volume)%"
+XF86AudioMute
+  pamixer -t
+
+# Media
+XF86Audio{Next,Prev,Play,Stop}
+  playerctl {next,previous,play-pause,stop}
+
+# File manager
+super + e
+  thunar
+
+# --- rofi-cyan-black-bindings ---
+super + shift + e
+    ~/.config/rofi/powermenu/powermenu.sh
+# --- end rofi-cyan-black-bindings ---

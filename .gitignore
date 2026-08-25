@@ -1,0 +1,12 @@
+# Backup files created by install.sh
+*.bak
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# Secrets / sensitive
+*.key
+*.pem
+id_rsa*
+id_ed25519*

@@ -1,0 +1,49 @@
+[global]
+monitor             = 0
+follow              = mouse
+width               = 320
+height              = 120
+origin              = top-right
+offset              = 10x52
+notification_limit  = 5
+progress_bar        = true
+progress_bar_height = 4
+progress_bar_color  = "#00f5ff"
+transparency        = 15
+separator_height    = 1
+padding             = 14
+horizontal_padding  = 16
+text_icon_padding   = 10
+frame_width         = 1
+frame_color         = "#00f5ff44"
+separator_color     = frame
+font                = JetBrainsMono Nerd Font 10
+markup              = full
+format              = "<b>%s</b>\n%b"
+alignment           = left
+show_age_threshold  = 60
+ellipsize           = middle
+stack_duplicates    = true
+icon_position       = left
+min_icon_size       = 20
+max_icon_size       = 32
+icon_theme          = Papirus-Dark
+enable_recursive_icon_lookup = true
+corner_radius       = 10
+history_length      = 20
+
+[urgency_low]
+background  = "#0d0d14ee"
+foreground  = "#e0e0e0"
+timeout     = 4
+
+[urgency_normal]
+background  = "#0d0d14ee"
+foreground  = "#e0e0e0"
+timeout     = 6
+
+[urgency_critical]
+background  = "#140a0dee"
+foreground  = "#ff4466"
+frame_color = "#ff4466"
+timeout     = 0

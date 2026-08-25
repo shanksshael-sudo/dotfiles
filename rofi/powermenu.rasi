@@ -1,0 +1,40 @@
+* {
+  bg:     #0d0d14f0;
+  accent: #00f5ff;
+  fg:     #e0e0e0;
+  red:    #ff4466;
+  font:   "JetBrainsMono Nerd Font Bold 13";
+  background-color: transparent;
+  text-color: @fg;
+}
+window {
+  background-color: @bg;
+  border:           1px solid;
+  border-color:     @accent;
+  border-radius:    14px;
+  width:            260px;
+  padding:          10px;
+}
+mainbox {
+  background-color: transparent;
+  children: [listview];
+  padding: 8px;
+}
+listview {
+  background-color: transparent;
+  lines: 4; columns: 1; spacing: 6px;
+}
+element {
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 14px 18px;
+  children: [element-icon, element-text];
+  spacing: 12px;
+  cursor: pointer;
+}
+element selected.normal {
+  background-color: @accent;
+  text-color: #0a0a0f;
+}
+element-icon { size: 22px; }
+element-text { vertical-align: 0.5; }
