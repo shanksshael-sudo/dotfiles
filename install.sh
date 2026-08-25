@@ -137,10 +137,36 @@ mkdir -p "$HOME/Pictures/wallpapers"
 cp "$DOTFILES_DIR/wallpapers/wallpaper.jpg" "$HOME/Pictures/wallpapers/wallpaper.jpg"
 success "Wallpaper copied to ~/Pictures/wallpapers/wallpaper.jpg"
 
+# ── Package installation (optional) ──────────────────────────────────────────
+echo ""
+echo -e "${YELLOW}Install packages from pkglist?${NC}"
+echo "  [1] Install official repo packages  (sudo pacman -S)"
+echo "  [2] Install AUR packages            (yay -S)"
+echo "  [3] Install both"
+echo "  [s] Skip"
+read -rp "Choice [1/2/3/s]: " pkg_choice
+
+case "$pkg_choice" in
+    1|3)
+        info "Installing official packages..."
+        # strip comments and blank lines
+        grep -v '^\s*#' "$DOTFILES_DIR/pkglist/pkgs_pacman.txt" | grep -v '^\s*$' | \
+            sudo pacman -S --needed -
+        success "Official packages installed."
+        ;&
+    2|3)
+        if ! command -v yay &>/dev/null; then
+            warn "yay not found. Install it first: https://github.com/Jguer/yay"
+        else
+            info "Installing AUR packages..."
+            grep -v '^\s*#' "$DOTFILES_DIR/pkglist/pkgs_aur.txt" | grep -v '^\s*$' | \
+                yay -S --needed -
+            success "AUR packages installed."
+        fi
+        ;;
+    *) info "Skipping package installation." ;;
+esac
+
 echo ""
 echo -e "${GREEN}✔ All done! Log out and back in (or run: exec bspwm) to apply.${NC}"
-echo ""
-echo -e "${YELLOW}Note: Make sure these packages are installed:${NC}"
-echo "  bspwm sxhkd polybar picom kitty dunst rofi feh"
-echo "  JetBrainsMono Nerd Font, Papirus-Dark icons, Materia-dark GTK theme"
 echo ""

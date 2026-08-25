@@ -1,0 +1,168 @@
+# Arch Linux — explicitly installed packages (official repos)
+# Install with: sudo pacman -S --needed - < pkgs_pacman.txt
+# Generated: 2026-08-25
+
+# ── Window Manager / Desktop ──────────────────────────────────────────────────
+bspwm
+sxhkd
+polybar
+picom
+dunst
+rofi
+feh
+xorg-server
+xorg-xinit
+xorg-xrandr
+xorg-xwininfo
+wmname
+xidlehook
+xss-lock
+xdotool
+xdo
+xclip
+arandr
+xf86-video-intel
+xf86-video-amdgpu
+xf86-video-ati
+xf86-video-nouveau
+brightnessctl
+xcursor-themes
+xdg-utils
+dmenu
+
+# ── Terminal / Shell ──────────────────────────────────────────────────────────
+kitty
+rxvt-unicode
+nano
+vim
+less
+
+# ── Audio / Video ─────────────────────────────────────────────────────────────
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+libpulse
+pamixer
+pavucontrol
+playerctl
+vlc
+vlc-plugins-all
+mpv
+ffmpegthumbnailer
+gst-libav
+gst-plugin-pipewire
+gst-plugins-ugly
+
+# ── File Management ───────────────────────────────────────────────────────────
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+gvfs
+gvfs-mtp
+file-roller
+tumbler
+catfish
+filelight
+unrar
+7zip
+
+# ── Browser / Internet ────────────────────────────────────────────────────────
+firefox
+wget
+networkmanager
+network-manager-applet
+iwd
+
+# ── Fonts ─────────────────────────────────────────────────────────────────────
+ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
+ttf-nerd-fonts-symbols
+ttf-roboto
+noto-fonts
+noto-fonts-emoji
+otf-oswald
+woff2-font-awesome
+
+# ── Themes / Icons ────────────────────────────────────────────────────────────
+materia-gtk-theme
+papirus-icon-theme
+lxappearance
+gtk4
+
+# ── Display / Login ───────────────────────────────────────────────────────────
+ly
+
+# ── System / Hardware ─────────────────────────────────────────────────────────
+linux
+linux-lts
+linux-lts-headers
+linux-firmware
+intel-ucode
+intel-media-driver
+libva-intel-driver
+libva-utils
+vulkan-intel
+vulkan-radeon
+vulkan-nouveau
+grub
+sudo
+zram-generator
+mmc-utils
+exfatprogs
+smartmontools
+
+# ── Notifications / Lock ─────────────────────────────────────────────────────
+i3lock-color
+
+# ── Monitoring ───────────────────────────────────────────────────────────────
+htop
+btop
+fastfetch
+
+# ── Development ───────────────────────────────────────────────────────────────
+git
+python-pip
+npm
+meson
+glib2-devel
+imagemagick
+scrot
+webkit2gtk-4.1
+
+# ── Communication ────────────────────────────────────────────────────────────
+discord
+telegram-desktop
+
+# ── Media / Entertainment ────────────────────────────────────────────────────
+qbittorrent
+steam
+k3b
+dvdstyler
+cdrdao
+drawing
+mcomix
+
+# ── Java ─────────────────────────────────────────────────────────────────────
+jre17-openjdk
+
+# ── Printing ─────────────────────────────────────────────────────────────────
+cups
+cups-pk-helper
+hplip
+system-config-printer
+
+# ── Bluetooth ────────────────────────────────────────────────────────────────
+bluez-utils
+bluez-obex
+
+# ── Misc / Tools ─────────────────────────────────────────────────────────────
+fakeroot
+debugedit
+nmap
+dirb
+xterm
+less
+xcursor-themes

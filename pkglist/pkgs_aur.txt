@@ -1,0 +1,27 @@
+# AUR packages — install with yay (or any AUR helper)
+# Install with: yay -S --needed - < pkgs_aur.txt
+# Generated: 2026-08-25
+
+# ── AUR Helper ───────────────────────────────────────────────────────────────
+yay
+
+# ── Window Manager extras ────────────────────────────────────────────────────
+i3lock-color
+xidlehook
+
+# ── Terminal / Apps ───────────────────────────────────────────────────────────
+cmatrix-git
+mov-cli
+localsend-bin
+obsidian
+vscodium-bin
+tauon-music-box
+airctl-bin
+woeusb-ng
+
+# ── Fonts / Icons ─────────────────────────────────────────────────────────────
+ttf-material-design-icons-desktop-git
+
+# ── Tools ────────────────────────────────────────────────────────────────────
+woff2-font-awesome
+dirb
